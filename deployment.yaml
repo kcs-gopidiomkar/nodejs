@@ -1,22 +1,19 @@
-apiVersion: extensions/v1beta1 
-kind: Deployment 
-metadata: 
-  name: shconnect-deployment 
-  labels: 
-spec: 
-  replicas: 2 
-  template: 
-    metadata: 
-      labels: 
-        app: shconnect-deployment 
-    spec: 
-      containers: 
-        - name: shconnect 
-          image: kcscr.azurecr.io/kcsgopidiomkarhttpd:#{tag}# 
-          imagePullPolicy: Always 
-          name: shconnect-deployment 
-          ports: 
-          - containerPort: 80 
-      imagePullSecrets: 
-        - name: acr-secret 
-
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+name: webapp
+spec:
+replicas: 2
+selector:
+matchLabels:
+app: webapp
+template:
+metadata:
+labels:
+app: webapp 
+spec:
+containers:
+        - name: webapp 
+image: kcscr.azurecr.io/sampleapp
+ports:
+          - containerPort: 80
