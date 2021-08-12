@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: nodejstest 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejstest
+  template:
+    metadata:
+      labels:
+        app: nodejstest 
+    spec:
+      containers:
+        - name: nodejstest 
+          image: kcsacrsupport.azurecr.io/nodejstest
+          ports:
+          - containerPort: 3000
